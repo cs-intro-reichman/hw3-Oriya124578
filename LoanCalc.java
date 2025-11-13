@@ -50,7 +50,7 @@ public class LoanCalc {
 		// Replace the following statement with your code
 
 		iterationCounter = 0;
-		double guess = loan / n; 
+		double guess = 0.0; 
 		
 		while (endBalance(loan, rate, n, guess) > 0){
 			iterationCounter++;
@@ -73,11 +73,15 @@ public class LoanCalc {
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
         // Replace the following statement with your code
 
-		iterationCounter = 4; 
+		iterationCounter = 0; 
 		double L = loan / n;
 		double H = 2 * L;
-		
-		
+
+		while (endBalance(loan, rate, n, H) > 0) {
+      	H = H * 2;
+    	}
+		iterationCounter++; 
+
 		while (H - L > epsilon) {
 			iterationCounter++;
 			double M = (L + H) / 2;
